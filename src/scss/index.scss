@@ -1,0 +1,107 @@
+@import "common.scss";
+@import "_minix.scss";
+$font-size:37.5px !default;
+@function rem($px) {
+    @return $px / $font-size * 1rem;
+}
+
+%Center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+$bg:background;
+$bor:border;
+$pd:padding;
+$mg:margin;
+* {
+    @include sizing;
+    font-family: "微软雅黑";
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    @include width(100%);
+    @include height(100%);
+    @include box_flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.header {
+    @include width(100%);
+    @include height(40px);
+    display: flex;
+    line-height: 40px;
+    span {
+        flex: 1;
+        font-size: 15px;
+    }
+    p {
+        flex: 9;
+        font-size: 15px;
+        text-indent: 100px;
+    }
+}
+
+.main {
+    @include width(100%);
+    flex: 1;
+    overflow: auto;
+    font-size: 15px;
+    ul {
+        @include width(90%);
+        margin: 0 5%;
+    }
+}
+
+.footer {
+    @include width(100%);
+    @include height(30px);
+    line-height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: rgb(192, 125, 49);
+    color: #fff;
+    font-size: 15px;
+}
+
+.mark {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, .5);
+    font-size: 15px;
+    z-index: 3;
+    display: none;
+    div {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -75px;
+        margin-left: -40%;
+        width: 80%;
+        height: 150px;
+        background: #fff;
+        border-radius: 10px;
+        z-index: 10;
+        p {
+            text-align: center;
+            line-height: 65px;
+            display: flex;
+            justify-content: space-around;
+        }
+        input {
+            width: 90%;
+            text-indent: 20px;
+        }
+    }
+}

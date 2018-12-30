@@ -1,0 +1,30 @@
+{
+    "name": "week1exam",
+    "version": "1.0.0",
+    "description": "周六自测",
+    "main": "gulpfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/15210633458/week1exam.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/15210633458/week1exam/issues"
+    },
+    "homepage": "https://github.com/15210633458/week1exam#readme",
+    "dependencies": {
+        "gulp": "^4.0.0",
+        "gulp-autoprefixer": "*",
+        "gulp-babel": "*",
+        "gulp-clean-css": "*",
+        "gulp-concat": "^2.6.1",
+        "gulp-htmlmin": "*",
+        "gulp-sass": "*",
+        "gulp-uglify": "*",
+        "gulp-webserver": "^0.9.1"
+    }
+}
