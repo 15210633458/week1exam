@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/font/iconfont.css">
-    <link rel="stylesheet" href="./scss/index.css">
+    <link rel="stylesheet" href="./css/all.css">
     <title>Document</title>
 </head>
 
 <body>
     <div class="wrap">
         <div class="header">
-            <span><</span>
+            <span class="icon iconfont icon-xiangzuo"></span>
             <p>分类列表</p>
         </div>
         <div class="main">
-            <ul>
+            <ul id="content">
                 <li>
                     <p>
                         <span>列表类型：</span>
@@ -30,21 +30,22 @@
                 </li>
             </ul>
         </div>
-        <div class="footer">
+        <div class="footer" id="add">
             添加列表
         </div>
 
     </div>
-    <div class="mark">
+    <div class="mark" id="mark">
         <div>
             <p>填写分类名称</p>
-            <input type="text" placeholder="创建分类名称">
+            <input id="classname" type="text" placeholder="创建分类名称">
             <p>
-                <span>取消</span>
-                <span>确定</span>
+                <span id="sure">取消</span>
+                <span id="cancel">确定</span>
             </p>
         </div>
     </div>
 </body>
+<script src="./js/require.js" data-main='./js/index.js'></script>
 
 </html>

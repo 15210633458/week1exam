@@ -11,7 +11,7 @@ var path = require('path');
 var fs = require('fs');
 var url = require('url');
 var querystring = require('querystring');
-var data = require('./data/list.json')
+var data = require('./data/data.json')
 
 
 gulp.task("bscss", function() {
@@ -34,19 +34,22 @@ function sev(file) {
     return gulp.src(file)
         .pipe(server({
             port: 3500,
-            host: '127.0.0.1',
             open: true,
-            livereload: true,
+            host: '172.21.66.50',
+            ivereload: true,
             middleware: function(req, res, next) {
                 if (req.url == '/favicon.ico') {
                     return res.end()
                 }
                 var pathname = url.parse(req.url).pathname;
-                // console.log(pathname)
+                //console.log(pathname)
                 if (pathname == '/api/list') {
                     res.end(JSON.stringify({
                         data: data
                     }))
+                } else if (pathname == '/api/add') {
+                    var addclass = url.parse(req.url, true).query
+                    console.log(addclass)
                 } else {
                     pathname = pathname == '/' ? 'index.html' : pathname;
                     res.end(fs.readFileSync(path.join(__dirname, 'src', pathname)))
@@ -60,17 +63,16 @@ gulp.task('server', function() {
 gulp.task('dev', gulp.series('bscss', 'server', 'watch'))
 
 
-
 // //压缩
 // //压缩js
 // gulp.task('bUglify', function() {
-//     return gulp.src(['./src/scripts/*.js', '!./src/js/*.min.js'])
-//         .pipe(babel({
-//             presets: ['@babel/env']
-//         }))
-//         .pipe(uglify())
-//         .pipe(gulp.dest('./build/scripts'))
-// })
+//         return gulp.src(['./src/scripts/*.js', '!./src/js/*.min.js'])
+//             .pipe(babel({
+//                 presets: ['@babel/env']
+//             }))
+//             .pipe(uglify())
+//             .pipe(gulp.dest('./build/scripts'))
+//     })
 //     //压缩html
 // gulp.task('bHtmlmin', function() {
 //     return gulp.src('./src/**/*.html')

@@ -58,6 +58,14 @@ html {
     ul {
         @include width(90%);
         margin: 0 5%;
+        li {
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            p {
+                height: 30px;
+                line-height: 30px;
+            }
+        }
     }
 }
 
