@@ -7,16 +7,20 @@ define(function() {
         var classname = document.getElementById('classname');
         var content = document.getElementById('content');
 
-        var xhr = new XMLHttpRequest()
-        xhr.open('get', '/api/list', true);
-        xhr.send()
-        xhr.onload = function(res) {
-            // console.log(res)
-            if (res.target.status == 200) {
-                var data = JSON.parse(res.target.response).data;
-                var html = '';
-                data.forEach((i) => {
-                    html += `<li>
+        //渲染数据
+        filldata()
+
+        function filldata() {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', '/api/list', true);
+            xhr.send()
+            xhr.onload = function(res) {
+                // console.log(res)
+                if (res.target.status == 200) {
+                    var data = JSON.parse(res.target.response).data;
+                    var html = '';
+                    data.forEach((i) => {
+                        html += `<li>
                                 <p>
                                     <span>列表类型：</span>
                                     <span>${i.class}</span>
@@ -26,28 +30,33 @@ define(function() {
                                     <span>${i.data}</span>
                                 </p>
                             </li>`
-                })
-                content.innerHTML = html
+                    })
+                    content.innerHTML = html
+                }
             }
         }
+
         add.onclick = function() {
             mark.style.display = "block"
         }
         sure.onclick = function() {
             mark.style.display = "none";
             var xhr = new XMLHttpRequest()
-            xhr.open('get', '/api/add', true);
-            xhr.send(`class=` + classname.value)
+            xhr.open('get', '/api/add?class=' + classname.value + "&data=" + new Date('2019/1/1'), true);
+            xhr.send()
             xhr.onload = function(res) {
                 if (res.target.status == 200) {
-                    console.log(data)
+                    var data = JSON.parse(res.target.response);
+                    if (data.code == 1) {
+                        alert(data.mes)
+                        filldata()
+                    }
                 }
             }
         }
         cancel.onclick = function() {
             mark.style.display = "none"
         }
-
     }
     return a
 });

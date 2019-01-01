@@ -48,8 +48,17 @@ function sev(file) {
                         data: data
                     }))
                 } else if (pathname == '/api/add') {
+                    //console.log(req.url)
                     var addclass = url.parse(req.url, true).query
-                    console.log(addclass)
+                        //console.log(addclass)
+                    var arr = data;
+                    arr.push(addclass)
+                        //console.log(arr)
+                    fs.writeFileSync('./data/data.json', JSON.stringify(arr));
+                    res.end(JSON.stringify({
+                        code: 1,
+                        mes: "添加成功"
+                    }))
                 } else {
                     pathname = pathname == '/' ? 'index.html' : pathname;
                     res.end(fs.readFileSync(path.join(__dirname, 'src', pathname)))
